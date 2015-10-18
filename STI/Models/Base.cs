@@ -37,6 +37,9 @@ namespace STI.Models
         public int BachilleratoId { get; set; }
         public float Promedio { get; set; }
         public int Ceneval { get; set; }
+        //foreing keys
+        public ICollection<Respuesta> Respuestas { get; set; }
+        public ICollection<ResultadoEnc> ResultadosEnc { get; set; }
     }
 
     public class Profesor
@@ -49,6 +52,10 @@ namespace STI.Models
     {
         public int EncuestaID { get; set; }
         public string Descripcion { get; set; }
+        //foreing keys
+        public Clasificacion Clasificacion { get; set; }
+        public Pregunta Pregunta { get; set; }
+        public ICollection<ResultadoEnc> ResultadosEnc { get; set; }
     }
 
     public class Clasificacion
@@ -56,6 +63,10 @@ namespace STI.Models
         public int ClasificacionId { get; set; }
         public int EncuestaID { get; set; }
         public string Descripcion { get; set; }
+        //foreing Keys
+        public Encuesta Encuesta { get; set; }
+        public ICollection<Pregunta> Preguntas { get; set; }
+        public ICollection<ResultadoEnc> ResultadosEnc { get; set; }
     }
 
     public class Clave
@@ -71,6 +82,9 @@ namespace STI.Models
         public int PreguntaId { get; set; }
         public int AlumnoId { get; set; }
         public int valor { get; set; }
+        //foreing keys
+        public Alumno Alumno { get; set; }
+        public Pregunta Pregunta { get; set; }
     }
 
     public class Bachillerato
@@ -84,7 +98,7 @@ namespace STI.Models
         public int PreguntaId { get; set; }
         public string Descripcion { get; set; }
         public int EncuestaID { get; set; }
-        public int? CategoriaId { get; set; }
+        public int? ClasificacionId { get; set; }
         public char valoracion { get; set; }
         public string Respuesta1 { get; set; }
         public string Respuesta2 { get; set; }
@@ -92,14 +106,24 @@ namespace STI.Models
         public string Respuesta4 { get; set; }
         public string Respuesta5 { get; set; }
         public string Imagen { get; set; }
+        //foreing Keys
+        public ICollection<Respuesta> Respuestas { get; set; }
+        public Clasificacion Clasificacion { get; set; }
+        public Encuesta Encuesta { get; set; }
     }
 
     public class ResultadoEnc
     {
         public int ResultadoEncID { get; set; }
+        public int AlumnoID { get; set; }
         public int EncuestaID { get; set; }
-        public int? CategoriaID { get; set; }
+        public int? ClasificacionID { get; set; }
         public int Resultado { get; set; }
+        //foreing Keys        
+        public Alumno Alumno { get; set; }
+        public Encuesta Encuesta { get; set; }
+        public Clasificacion Clasificacion { get; set; }
+
     }
 
 }
