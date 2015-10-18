@@ -52,10 +52,10 @@ namespace STI.Models
     {
         public int EncuestaID { get; set; }
         public string Descripcion { get; set; }
-        //foreing keys
-        public Clasificacion Clasificacion { get; set; }
-        public Pregunta Pregunta { get; set; }
+        //foreing keys       
         public ICollection<ResultadoEnc> ResultadosEnc { get; set; }
+        public ICollection<Pregunta> Preguntas { get; set; }
+        public ICollection<Clasificacion> Clasificaciones { get; set; }
     }
 
     public class Clasificacion
@@ -107,9 +107,9 @@ namespace STI.Models
         public string Respuesta5 { get; set; }
         public string Imagen { get; set; }
         //foreing Keys
+        public Encuesta Encuesta { get; set; }
         public ICollection<Respuesta> Respuestas { get; set; }
         public Clasificacion Clasificacion { get; set; }
-        public Encuesta Encuesta { get; set; }
     }
 
     public class ResultadoEnc
